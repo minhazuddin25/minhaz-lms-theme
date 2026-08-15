@@ -15,6 +15,12 @@
 		document.body.classList.remove( 'menu-open' );
 	};
 
+	const openMenu = function() {
+		toggle.setAttribute( 'aria-expanded', 'true' );
+		navigation.classList.add( 'is-open' );
+		document.body.classList.add( 'menu-open' );
+	};
+
 	toggle.addEventListener( 'click', function() {
 		const isExpanded = 'true' === toggle.getAttribute( 'aria-expanded' );
 		if ( isExpanded ) {
@@ -22,9 +28,7 @@
 			return;
 		}
 
-		toggle.setAttribute( 'aria-expanded', 'true' );
-		navigation.classList.add( 'is-open' );
-		document.body.classList.add( 'menu-open' );
+		openMenu();
 	} );
 
 	document.addEventListener( 'keydown', function( event ) {
@@ -34,8 +38,20 @@
 		}
 	} );
 
+	document.addEventListener( 'click', function( event ) {
+		if ( ! navigation.contains( event.target ) && ! toggle.contains( event.target ) ) {
+			closeMenu();
+		}
+	} );
+
 	navigation.addEventListener( 'click', function( event ) {
 		if ( event.target.closest( 'a' ) ) {
+			closeMenu();
+		}
+	} );
+
+	window.addEventListener( 'resize', function() {
+		if ( window.innerWidth >= 768 ) {
 			closeMenu();
 		}
 	} );
