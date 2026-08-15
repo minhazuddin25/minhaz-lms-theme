@@ -4,7 +4,7 @@
  *
  * @package Minhaz_LMS
  */
-<?php
+
 if ( '' === trim( get_post_field( 'post_content', get_the_ID() ) ) ) {
 	return;
 }

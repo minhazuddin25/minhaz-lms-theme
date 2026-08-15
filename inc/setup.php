@@ -50,6 +50,6 @@ add_action( 'after_setup_theme', 'minhaz_lms_setup' );
  * Sets the global content width.
  */
 function minhaz_lms_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'minhaz_lms_content_width', 760 );
+	$GLOBALS['content_width'] = apply_filters( 'minhaz_lms_content_width', 1200 );
 }
 add_action( 'after_setup_theme', 'minhaz_lms_content_width', 0 );
