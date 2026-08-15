@@ -98,6 +98,118 @@ function minhaz_lms_get_featured_author() {
 }
 
 /**
+ * Gets the active course post type for the homepage section.
+ *
+ * When Tutor LMS is active, the featured course section should read real course posts.
+ * Otherwise it falls back to native WordPress posts.
+ *
+ * @return string
+ */
+function minhaz_lms_get_featured_course_post_type() {
+	if ( function_exists( 'tutor' ) ) {
+		$tutor = tutor();
+		if ( is_object( $tutor ) && ! empty( $tutor->course_post_type ) ) {
+			return $tutor->course_post_type;
+		}
+
+		if ( method_exists( $tutor, 'all' ) ) {
+			$config = $tutor->all();
+			if ( ! empty( $config['course_post_type'] ) ) {
+				return $config['course_post_type'];
+			}
+		}
+	}
+
+	return 'post';
+}
+
+/**
+ * Gets the normalized rating value for a course.
+ *
+ * @param int $post_id Course ID.
+ * @return string
+ */
+function minhaz_lms_get_course_rating_value( $post_id ) {
+	$rating = apply_filters( 'minhaz_lms_course_rating', 0, $post_id );
+
+	if ( function_exists( 'tutor_utils' ) && is_object( tutor_utils() ) && method_exists( tutor_utils(), 'get_course_rating' ) ) {
+		$rating = tutor_utils()->get_course_rating( $post_id );
+	}
+
+	if ( ! is_numeric( $rating ) || (float) $rating <= 0 ) {
+		$comments = get_comments(
+			array(
+				'post_id' => absint( $post_id ),
+				'type'    => 'tutor_course_rating',
+				'status'  => 'approve',
+				'number'  => 50,
+			)
+		);
+
+		if ( ! empty( $comments ) ) {
+			$total = 0;
+			$count = 0;
+			foreach ( $comments as $comment ) {
+				$comment_rating = get_comment_meta( $comment->comment_ID, 'tutor_rating', true );
+				if ( '' === $comment_rating ) {
+					$comment_rating = get_comment_meta( $comment->comment_ID, '_tutor_rating', true );
+				}
+				if ( is_numeric( $comment_rating ) ) {
+					$total += (float) $comment_rating;
+					$count++;
+				}
+			}
+
+			if ( $count > 0 ) {
+				$rating = $total / $count;
+			}
+		}
+	}
+
+	if ( ! is_numeric( $rating ) || (float) $rating <= 0 ) {
+		$rating = 4.9;
+	}
+
+	return number_format( (float) $rating, 1 );
+}
+
+/**
+ * Gets the normalized course price value.
+ *
+ * @param int $post_id Course ID.
+ * @return string
+ */
+function minhaz_lms_get_course_price_value( $post_id ) {
+	$price_type = get_post_meta( $post_id, '_tutor_course_price_type', true );
+	$price      = get_post_meta( $post_id, 'tutor_course_price', true );
+	$sale_price = get_post_meta( $post_id, 'tutor_course_sale_price', true );
+
+	if ( function_exists( 'tutor_get_formatted_price' ) ) {
+		if ( ! empty( $sale_price ) && '0' !== (string) $sale_price && ! empty( $price ) && (float) $sale_price < (float) $price ) {
+			return tutor_get_formatted_price( $sale_price );
+		}
+		if ( ! empty( $price ) && '0' !== (string) $price ) {
+			return tutor_get_formatted_price( $price );
+		}
+		return esc_html__( 'Free', 'minhaz-lms' );
+	}
+
+	if ( ! empty( $sale_price ) && '0' !== (string) $sale_price && ! empty( $price ) && (float) $sale_price < (float) $price ) {
+		return wp_strip_all_tags( wp_kses_post( sprintf( '%s', number_format_i18n( (float) $sale_price ) ) ) );
+	}
+
+	if ( ! empty( $price ) && '0' !== (string) $price ) {
+		return wp_strip_all_tags( wp_kses_post( sprintf( '%s', number_format_i18n( (float) $price ) ) ) );
+	}
+
+	if ( 'free' === $price_type || empty( $price ) || '0' === (string) $price ) {
+		return esc_html__( 'Free', 'minhaz-lms' );
+	}
+
+	return esc_html__( 'Free', 'minhaz-lms' );
+}
+
+/**
  * Gets the normalized course data structure for a post or a future LMS object.
  *
  * @param int|WP_Post|null $post Post object or ID.
@@ -138,8 +250,8 @@ function minhaz_lms_get_course_data( $post = null ) {
 		$image = '<div class="course-card__placeholder" aria-hidden="true"><span></span><span></span></div>';
 	}
 
-	$rating = apply_filters( 'minhaz_lms_course_rating', '4.9', $post_id );
-	$price  = apply_filters( 'minhaz_lms_course_price', esc_html__( 'Free', 'minhaz-lms' ), $post_id );
+	$rating = minhaz_lms_get_course_rating_value( $post_id );
+	$price  = apply_filters( 'minhaz_lms_course_price', minhaz_lms_get_course_price_value( $post_id ), $post_id );
 
 	return array(
 		'id'        => $post_id,
@@ -147,27 +259,46 @@ function minhaz_lms_get_course_data( $post = null ) {
 		'link'      => $link,
 		'image'     => $image,
 		'instructor'=> $instructor,
-		'rating'    => is_numeric( $rating ) ? number_format( (float) $rating, 1 ) : '4.9',
+		'rating'    => $rating,
 		'price'     => $price,
 		'cta_label' => __( 'View course', 'minhaz-lms' ),
 	);
 }
 
 /**
- * Returns a future-friendly course query for the homepage fallback area.
+ * Returns the homepage course query for the featured section.
  *
  * @param int $count Number of results to request.
  * @return WP_Query
  */
 function minhaz_lms_get_featured_course_query( $count = 3 ) {
+	$course_post_type = minhaz_lms_get_featured_course_post_type();
+
+	if ( function_exists( 'tutor' ) && 'post' !== $course_post_type ) {
+		$query = new WP_Query(
+			array(
+				'post_type'           => $course_post_type,
+				'post_status'         => 'publish',
+				'posts_per_page'      => absint( $count ),
+				'orderby'             => 'date',
+				'order'               => 'DESC',
+				'ignore_sticky_posts' => true,
+			)
+		);
+
+		if ( $query->have_posts() ) {
+			return $query;
+		}
+	}
+
 	return new WP_Query(
 		array(
-			'post_type'      => 'post',
-			'posts_per_page' => absint( $count ),
-			'orderby'        => 'date',
-			'order'          => 'DESC',
+			'post_type'           => 'post',
+			'post_status'         => 'publish',
+			'posts_per_page'      => absint( $count ),
+			'orderby'             => 'date',
+			'order'               => 'DESC',
 			'ignore_sticky_posts' => true,
-			'no_found_rows'  => true,
 		)
 	);
 }

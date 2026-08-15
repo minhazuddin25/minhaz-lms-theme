@@ -2,15 +2,23 @@
 /**
  * Featured course section template.
  *
- * Works with native WordPress content now and can later consume Tutor LMS data.
+ * Uses Tutor LMS course data when the plugin is active and falls back to WordPress
+ * posts only when Tutor is unavailable.
  *
  * @package Minhaz_LMS
  */
 
-$minhaz_lms_course_query = minhaz_lms_get_featured_course_query( 3 );
-$minhaz_lms_course_items = array();
+$minhaz_lms_course_post_type = minhaz_lms_get_featured_course_post_type();
+$minhaz_lms_course_query     = false;
+$minhaz_lms_course_items     = array();
 
-if ( $minhaz_lms_course_query->have_posts() ) {
+if ( function_exists( 'tutor' ) && 'post' !== $minhaz_lms_course_post_type ) {
+	$minhaz_lms_course_query = minhaz_lms_get_featured_course_query( 3 );
+} else {
+	$minhaz_lms_course_query = minhaz_lms_get_featured_course_query( 3 );
+}
+
+if ( $minhaz_lms_course_query instanceof WP_Query && $minhaz_lms_course_query->have_posts() ) {
 	while ( $minhaz_lms_course_query->have_posts() ) {
 		$minhaz_lms_course_query->the_post();
 		$course = minhaz_lms_get_course_data( get_the_ID() );
@@ -57,7 +65,11 @@ wp_reset_postdata();
 		<?php else : ?>
 			<div class="homepage-empty-state">
 				<p class="homepage-empty-state__title"><?php esc_html_e( 'Your featured courses will appear here.', 'minhaz-lms' ); ?></p>
-				<p><?php esc_html_e( 'Publish WordPress posts to populate this course-ready section.', 'minhaz-lms' ); ?></p>
+				<?php if ( 'post' === $minhaz_lms_course_post_type ) : ?>
+					<p><?php esc_html_e( 'Publish WordPress posts to populate this course-ready section.', 'minhaz-lms' ); ?></p>
+				<?php else : ?>
+					<p><?php esc_html_e( 'No published Tutor LMS courses are available yet.', 'minhaz-lms' ); ?></p>
+				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 	</div>
