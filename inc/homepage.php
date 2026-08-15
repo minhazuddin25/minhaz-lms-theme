@@ -96,3 +96,78 @@ function minhaz_lms_get_featured_author() {
 
 	return $author_id ? get_userdata( $author_id ) : false;
 }
+
+/**
+ * Gets the normalized course data structure for a post or a future LMS object.
+ *
+ * @param int|WP_Post|null $post Post object or ID.
+ * @return array|false Course data array or false when invalid.
+ */
+function minhaz_lms_get_course_data( $post = null ) {
+	$post = get_post( $post );
+
+	if ( ! $post ) {
+		return false;
+	}
+
+	$post_id = absint( $post->ID );
+	$title   = get_the_title( $post_id );
+	$link    = get_permalink( $post_id );
+
+	if ( '' === $title ) {
+		$title = __( 'Untitled course', 'minhaz-lms' );
+	}
+
+	$instructor = get_the_author_meta( 'display_name', $post->post_author );
+	if ( ! $instructor ) {
+		$instructor = __( 'Instructor', 'minhaz-lms' );
+	}
+
+	$image = '';
+	if ( has_post_thumbnail( $post_id ) ) {
+		$image = get_the_post_thumbnail(
+			$post_id,
+			'large',
+			array(
+				'class'   => 'course-card__image',
+				'loading' => 'lazy',
+				'alt'     => $title,
+			)
+		);
+	} else {
+		$image = '<div class="course-card__placeholder" aria-hidden="true"><span></span><span></span></div>';
+	}
+
+	$rating = apply_filters( 'minhaz_lms_course_rating', '4.9', $post_id );
+	$price  = apply_filters( 'minhaz_lms_course_price', esc_html__( 'Free', 'minhaz-lms' ), $post_id );
+
+	return array(
+		'id'        => $post_id,
+		'title'     => $title,
+		'link'      => $link,
+		'image'     => $image,
+		'instructor'=> $instructor,
+		'rating'    => is_numeric( $rating ) ? number_format( (float) $rating, 1 ) : '4.9',
+		'price'     => $price,
+		'cta_label' => __( 'View course', 'minhaz-lms' ),
+	);
+}
+
+/**
+ * Returns a future-friendly course query for the homepage fallback area.
+ *
+ * @param int $count Number of results to request.
+ * @return WP_Query
+ */
+function minhaz_lms_get_featured_course_query( $count = 3 ) {
+	return new WP_Query(
+		array(
+			'post_type'      => 'post',
+			'posts_per_page' => absint( $count ),
+			'orderby'        => 'date',
+			'order'          => 'DESC',
+			'ignore_sticky_posts' => true,
+			'no_found_rows'  => true,
+		)
+	);
+}

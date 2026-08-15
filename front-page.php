@@ -12,6 +12,7 @@ get_header();
 	<?php get_template_part( 'template-parts/front-page/hero' ); ?>
 	<?php get_template_part( 'template-parts/front-page/trust-statistics' ); ?>
 	<?php get_template_part( 'template-parts/front-page/learning-benefits' ); ?>
+	<?php get_template_part( 'template-parts/front-page/featured-courses' ); ?>
 	<?php get_template_part( 'template-parts/front-page/featured-posts' ); ?>
 	<?php get_template_part( 'template-parts/front-page/topic-categories' ); ?>
 	<?php get_template_part( 'template-parts/front-page/featured-author' ); ?>
