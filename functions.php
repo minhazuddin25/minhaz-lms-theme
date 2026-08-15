@@ -22,6 +22,7 @@ $minhaz_lms_includes = array(
 	'inc/accessibility.php',
 	'inc/customizer.php',
 	'inc/homepage.php',
+	'inc/course-single.php',
 	'inc/template-tags.php',
 );
 
