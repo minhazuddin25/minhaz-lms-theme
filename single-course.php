@@ -111,7 +111,7 @@ if ( empty( $course_excerpt ) ) {
 							<span></span>
 							<span></span>
 						</div>
-					<?php }
+					<?php }?>
 				</div>
 			</div>
 		</div>
