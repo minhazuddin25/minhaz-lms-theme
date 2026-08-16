@@ -189,7 +189,7 @@ if ( empty( $course_excerpt ) ) {
 						<?php if ( $related_course ) : ?>
 							<article class="course-card" role="listitem" aria-label="<?php echo esc_attr( $related_course['title'] ); ?>">
 								<a class="course-card__media" href="<?php echo esc_url( $related_course['link'] ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'View course: %s', 'minhaz-lms' ), $related_course['title'] ) ); ?>">
-									<?php echo $related_course['image']; ?>
+									<?php echo wp_kses( $related_course['image'], array( 'img' => array( 'src' => true, 'alt' => true, 'class' => true, 'loading' => true, 'width' => true, 'height' => true, 'decoding' => true ), 'div' => array( 'class' => true, 'aria-hidden' => true ), 'span' => array() ) ); ?>
 								</a>
 								<div class="course-card__body">
 									<div class="course-card__meta">

@@ -42,7 +42,7 @@ wp_reset_postdata();
 				<?php foreach ( $minhaz_lms_course_items as $course ) : ?>
 					<article class="course-card" role="listitem" aria-label="<?php echo esc_attr( $course['title'] ); ?>">
 						<a class="course-card__media" href="<?php echo esc_url( $course['link'] ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'View course: %s', 'minhaz-lms' ), $course['title'] ) ); ?>">
-							<?php echo $course['image']; ?>
+						<?php echo wp_kses( $course['image'], array( 'img' => array( 'src' => true, 'alt' => true, 'class' => true, 'loading' => true, 'width' => true, 'height' => true, 'decoding' => true ), 'div' => array( 'class' => true, 'aria-hidden' => true ), 'span' => array() ) ); ?>
 						</a>
 						<div class="course-card__body">
 							<div class="course-card__meta">

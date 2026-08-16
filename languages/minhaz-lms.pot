@@ -1,0 +1,625 @@
+# Copyright (C) 2024 Minhaz LMS
+# This file is distributed under the same license as the Minhaz LMS package.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: Minhaz LMS 0.1.0\n"
+"Report-Msgid-Bugs-To: https://example.com\n"
+"POT-Creation-Date: 2024-08-16 00:00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+
+#: 404.php:11
+msgid "Page not found"
+msgstr ""
+
+#: 404.php:12
+msgid "The page you requested could not be found. Try a search instead."
+msgstr ""
+
+#: comments.php:28
+msgid "Comments are closed."
+msgstr ""
+
+#: header.php:16
+msgid "Skip to content"
+msgstr ""
+
+#: inc/course-single.php:47
+msgid "Duration"
+msgstr ""
+
+#: inc/course-single.php:61
+msgid "Lesson"
+msgid_plural "Lessons"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/course-single.php:72
+msgid "Quiz"
+msgid_plural "Quizzes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/course-single.php:81
+msgid "Students"
+msgstr ""
+
+#: inc/course-single.php:90
+msgid "Level"
+msgstr ""
+
+#: inc/course-single.php:105
+msgid "Category"
+msgid_plural "Categories"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/course-single.php:126, inc/course-single.php:140, inc/course-single.php:151
+msgid "No reviews yet"
+msgstr ""
+
+#: inc/course-single.php:151
+msgid "%s review"
+msgid_plural "%s reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/customizer.php:21
+msgid "Minhaz LMS Presentation"
+msgstr ""
+
+#: inc/customizer.php:22
+msgid "Optional calls to action and front-page presentation controls."
+msgstr ""
+
+#: inc/customizer.php:30
+msgid "Hero"
+msgstr ""
+
+#: inc/customizer.php:37
+msgid "Hero eyebrow"
+msgstr ""
+
+#: inc/customizer.php:38
+msgid "LEARN WITHOUT LIMITS"
+msgstr ""
+
+#: inc/customizer.php:41
+msgid "Hero heading"
+msgstr ""
+
+#: inc/customizer.php:42
+msgid "Learn. Grow. Succeed."
+msgstr ""
+
+#: inc/customizer.php:45
+msgid "Hero description"
+msgstr ""
+
+#: inc/customizer.php:46
+msgid "Build your skills with professional online courses designed to help you learn faster and achieve more."
+msgstr ""
+
+#: inc/customizer.php:79
+msgid "Hero image"
+msgstr ""
+
+#: inc/customizer.php:80
+msgid "Optional image displayed on the right side of the homepage hero."
+msgstr ""
+
+#: inc/customizer.php:90
+msgid "Calls to Action"
+msgstr ""
+
+#: inc/customizer.php:97
+msgid "Primary CTA label"
+msgstr ""
+
+#: inc/customizer.php:98
+msgid "Explore Courses"
+msgstr ""
+
+#: inc/customizer.php:101
+msgid "Secondary CTA label"
+msgstr ""
+
+#: inc/customizer.php:102
+msgid "Get Started"
+msgstr ""
+
+#: inc/customizer.php:125
+msgid "Primary CTA URL"
+msgstr ""
+
+#: inc/customizer.php:126
+msgid "Secondary CTA URL"
+msgstr ""
+
+#: inc/customizer.php:149
+msgid "Testimonial"
+msgstr ""
+
+#: inc/customizer.php:154
+msgid "Testimonial quote"
+msgstr ""
+
+#: inc/customizer.php:155
+msgid "Testimonial name and role"
+msgstr ""
+
+#: inc/customizer.php:177
+msgid "Final Call to Action"
+msgstr ""
+
+#: inc/customizer.php:183
+msgid "Final CTA heading"
+msgstr ""
+
+#: inc/customizer.php:184
+msgid "Ready for your next learning step?"
+msgstr ""
+
+#: inc/customizer.php:187
+msgid "Final CTA description"
+msgstr ""
+
+#: inc/customizer.php:188
+msgid "Choose a clear next step for your visitors and guide them to the right destination."
+msgstr ""
+
+#: inc/homepage.php:28
+msgid "View course"
+msgstr ""
+
+#: inc/homepage.php:28
+msgid "Explore Courses"
+msgstr ""
+
+#: inc/homepage.php:28
+msgid "Get Started"
+msgstr ""
+
+#: inc/homepage.php:62
+msgid "Published articles"
+msgstr ""
+
+#: inc/homepage.php:66
+msgid "Topics to explore"
+msgstr ""
+
+#: inc/homepage.php:70
+msgid "Approved comments"
+msgstr ""
+
+#: inc/homepage.php:232, inc/homepage.php:244, inc/homepage.php:247
+msgid "Free"
+msgstr ""
+
+#: inc/homepage.php:268
+msgid "Untitled course"
+msgstr ""
+
+#: inc/homepage.php:273
+msgid "Instructor"
+msgstr ""
+
+#: inc/homepage.php:302
+msgid "View course"
+msgstr ""
+
+#: inc/menus.php:18
+msgid "Primary Menu"
+msgstr ""
+
+#: inc/menus.php:19
+msgid "Footer Menu"
+msgstr ""
+
+#: inc/menus.php:20
+msgid "Social Links Menu"
+msgstr ""
+
+#: inc/menus.php:42
+msgid "Set up primary menu"
+msgstr ""
+
+#: inc/sidebars.php:18
+msgid "Primary Sidebar"
+msgstr ""
+
+#: inc/sidebars.php:20
+msgid "Widgets displayed beside supported content."
+msgstr ""
+
+#: inc/sidebars.php:30
+msgid "Footer Widgets"
+msgstr ""
+
+#: inc/sidebars.php:32
+msgid "Widgets displayed in the site footer."
+msgstr ""
+
+#: inc/template-tags.php:28
+msgid "Published %s"
+msgstr ""
+
+#: index.php:13
+msgid "Latest posts"
+msgstr ""
+
+#: patterns/featured-content.php:12
+msgid "Featured learning content"
+msgstr ""
+
+#: patterns/featured-content.php:13
+msgid "This section automatically displays your most recent WordPress posts."
+msgstr ""
+
+#: patterns/final-cta.php:11
+msgid "Add a clear next step"
+msgstr ""
+
+#: patterns/instructor-profile.php:11
+msgid "Meet your educator"
+msgstr ""
+
+#: patterns/learning-benefits.php:13
+msgid "Why learners choose this space"
+msgstr ""
+
+#: patterns/learning-benefits.php:14
+msgid "Add a benefit"
+msgstr ""
+
+#: patterns/learning-benefits.php:14
+msgid "Describe why your learner chose this learning path."
+msgstr ""
+
+#: patterns/testimonial.php:11
+msgid "Replace this placeholder with a real, permissioned learner or client testimonial."
+msgstr ""
+
+#: patterns/testimonial.php:11
+msgid "Add the person's name and role"
+msgstr ""
+
+#: patterns/topic-categories.php:12
+msgid "Explore topics"
+msgstr ""
+
+#: patterns/topic-categories.php:13
+msgid "Use your existing WordPress categories to help visitors find relevant content."
+msgstr ""
+
+#: search.php:12
+msgid "Search results for: %s"
+msgstr ""
+
+#: sidebar.php:12
+msgid "Sidebar"
+msgstr ""
+
+#: single-course.php:36
+msgid "Breadcrumb"
+msgstr ""
+
+#: single-course.php:37
+msgid "Home"
+msgstr ""
+
+#: single-course.php:43
+msgid "Courses"
+msgstr ""
+
+#: single-course.php:64
+msgid "Course rating"
+msgstr ""
+
+#: single-course.php:73
+msgid "%s review"
+msgid_plural "%s reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: single-course.php:122
+msgid "Course details"
+msgstr ""
+
+#: single-course.php:133
+msgid "About this course"
+msgstr ""
+
+#: single-course.php:182
+msgid "Continue learning"
+msgstr ""
+
+#: single-course.php:183
+msgid "Related courses"
+msgstr ""
+
+#: single-course.php:185
+msgid "Related courses"
+msgstr ""
+
+#: single-course.php:191
+msgid "View course: %s"
+msgstr ""
+
+#: single-course.php:196
+msgid "Rated %s out of 5"
+msgstr ""
+
+#: single-course.php:202
+msgid "By %s"
+msgstr ""
+
+#: template-parts/archive/course-archive.php:54
+msgid "Courses"
+msgstr ""
+
+#: template-parts/archive/course-archive.php:60
+msgid "Explore Our Courses"
+msgstr ""
+
+#: template-parts/archive/course-archive.php:69
+msgid "Browse our full catalog of learning tracks and build the skills you need for the next step in your career."
+msgstr ""
+
+#: template-parts/archive/course-archive.php:76
+msgid "Course archive"
+msgstr ""
+
+#: template-parts/archive/course-archive.php:79
+msgid "View course: %s"
+msgstr ""
+
+#: template-parts/archive/course-archive.php:84
+msgid "Rated %s out of 5"
+msgstr ""
+
+#: template-parts/archive/course-archive.php:92
+msgid "By %s"
+msgstr ""
+
+#: template-parts/archive/course-archive.php:105
+msgid "Tutor LMS is inactive."
+msgstr ""
+
+#: template-parts/archive/course-archive.php:107
+msgid "No courses are available yet."
+msgstr ""
+
+#: template-parts/archive/course-archive.php:114
+msgid "Activate Tutor LMS to show your course catalog here."
+msgstr ""
+
+#: template-parts/archive/course-archive.php:116
+msgid "New published courses will appear here automatically."
+msgstr ""
+
+#: template-parts/archive/course-archive.php:125
+msgid "Course archive pagination"
+msgstr ""
+
+#: template-parts/archive/course-archive.php:130
+msgid "&laquo; Previous"
+msgstr ""
+
+#: template-parts/archive/course-archive.php:131
+msgid "Next &raquo;"
+msgstr ""
+
+#: template-parts/content/content-none.php:9
+msgid "Nothing found"
+msgstr ""
+
+#: template-parts/content/content-none.php:12
+msgid "No results matched your search. Please try again."
+msgstr ""
+
+#: template-parts/content/content-none.php:14
+msgid "There is no content to display yet."
+msgstr ""
+
+#: template-parts/content/content-page.php:12
+msgid "Page"
+msgstr ""
+
+#: template-parts/content/content-single.php:18
+msgid "Page"
+msgstr ""
+
+#: template-parts/footer/site-footer.php:25
+msgid "Social links"
+msgstr ""
+
+#: template-parts/footer/site-footer.php:30
+msgid "Footer navigation"
+msgstr ""
+
+#: template-parts/footer/site-footer.php:34
+msgid "Built for learning."
+msgstr ""
+
+#: template-parts/front-page/content.php:16
+msgid "Page"
+msgstr ""
+
+#: template-parts/front-page/featured-author.php:17
+msgid "From our authors"
+msgstr ""
+
+#: template-parts/front-page/featured-author.php:22
+msgid "This author's published WordPress content is featured throughout the site."
+msgstr ""
+
+#: template-parts/front-page/featured-author.php:24
+msgid "View author posts"
+msgstr ""
+
+#: template-parts/front-page/featured-author.php:28
+msgid "Your author spotlight will appear here."
+msgstr ""
+
+#: template-parts/front-page/featured-author.php:28
+msgid "Publish a WordPress post to feature its real author in this section."
+msgstr ""
+
+#: template-parts/front-page/featured-courses.php:36
+msgid "Popular courses"
+msgstr ""
+
+#: template-parts/front-page/featured-courses.php:37
+msgid "Explore our latest learning tracks"
+msgstr ""
+
+#: template-parts/front-page/featured-courses.php:41
+msgid "Featured courses"
+msgstr ""
+
+#: template-parts/front-page/featured-courses.php:44
+msgid "View course: %s"
+msgstr ""
+
+#: template-parts/front-page/featured-courses.php:49
+msgid "Rated %s out of 5"
+msgstr ""
+
+#: template-parts/front-page/featured-courses.php:57
+msgid "By %s"
+msgstr ""
+
+#: template-parts/front-page/featured-courses.php:67
+msgid "Your featured courses will appear here."
+msgstr ""
+
+#: template-parts/front-page/featured-courses.php:69
+msgid "Publish WordPress posts to populate this course-ready section."
+msgstr ""
+
+#: template-parts/front-page/featured-courses.php:71
+msgid "No published Tutor LMS courses are available yet."
+msgstr ""
+
+#: template-parts/front-page/featured-posts.php:21
+msgid "From the journal"
+msgstr ""
+
+#: template-parts/front-page/featured-posts.php:22
+msgid "Featured learning content"
+msgstr ""
+
+#: template-parts/front-page/featured-posts.php:32
+msgid "Your featured learning content will appear here."
+msgstr ""
+
+#: template-parts/front-page/featured-posts.php:33
+msgid "Publish WordPress posts to begin building this section with your own content."
+msgstr ""
+
+#: template-parts/front-page/final-cta.php:8
+msgid "Ready for your next learning step?"
+msgstr ""
+
+#: template-parts/front-page/final-cta.php:9
+msgid "Choose a clear next step for your visitors and guide them to the right destination."
+msgstr ""
+
+#: template-parts/front-page/hero.php:9
+msgid "LEARN WITHOUT LIMITS"
+msgstr ""
+
+#: template-parts/front-page/hero.php:10
+msgid "Learn. Grow. Succeed."
+msgstr ""
+
+#: template-parts/front-page/hero.php:11
+msgid "Build your skills with professional online courses designed to help you learn faster and achieve more."
+msgstr ""
+
+#: template-parts/front-page/learning-benefits.php:10
+msgid "Thoughtful learning paths"
+msgstr ""
+
+#: template-parts/front-page/learning-benefits.php:11
+msgid "Organize your own content into clear, purposeful journeys for visitors."
+msgstr ""
+
+#: template-parts/front-page/learning-benefits.php:14
+msgid "Focused knowledge"
+msgstr ""
+
+#: template-parts/front-page/learning-benefits.php:15
+msgid "Share useful articles and resources in a calm, distraction-free reading experience."
+msgstr ""
+
+#: template-parts/front-page/learning-benefits.php:18
+msgid "Built to grow with you"
+msgstr ""
+
+#: template-parts/front-page/learning-benefits.php:19
+msgid "Start with native WordPress content and extend your learning platform when you are ready."
+msgstr ""
+
+#: template-parts/front-page/learning-benefits.php:26
+msgid "Made for meaningful progress"
+msgstr ""
+
+#: template-parts/front-page/learning-benefits.php:27
+msgid "A stronger learning experience starts here"
+msgstr ""
+
+#: template-parts/front-page/testimonial.php:15
+msgid "Shared experience"
+msgstr ""
+
+#: template-parts/front-page/testimonial.php:18
+msgid "Share a real learner experience"
+msgstr ""
+
+#: template-parts/front-page/testimonial.php:19
+msgid "Add a verified, permissioned testimonial in the Customizer when one is available. Until then, this intentional placeholder keeps the section honest."
+msgstr ""
+
+#: template-parts/front-page/topic-categories.php:20
+msgid "Browse by topic"
+msgstr ""
+
+#: template-parts/front-page/topic-categories.php:21
+msgid "Discover what interests you"
+msgstr ""
+
+#: template-parts/front-page/topic-categories.php:33
+msgid "Topics will appear here as your content grows."
+msgstr ""
+
+#: template-parts/front-page/topic-categories.php:33
+msgid "Assign native WordPress categories to published posts to populate this area."
+msgstr ""
+
+#: template-parts/front-page/trust-statistics.php:10
+msgid "Site statistics"
+msgstr ""
+
+#: template-parts/header/site-header.php:31
+msgid "Toggle primary navigation"
+msgstr ""
+
+#: template-parts/header/site-header.php:34
+msgid "Primary navigation"
+msgstr ""
+
+#: template-parts/header/site-header.php:43
+msgid "Dashboard"
+msgstr ""
+
+#: template-parts/header/site-header.php:43
+msgid "Log in"
+msgstr ""
