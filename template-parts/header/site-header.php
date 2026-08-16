@@ -39,8 +39,8 @@
 				<?php if ( minhaz_lms_has_cta( $minhaz_lms_header_cta ) ) : ?>
 					<a class="button button--compact site-header__cta" href="<?php echo esc_url( $minhaz_lms_header_cta['url'] ); ?>"><?php echo esc_html( $minhaz_lms_header_cta['label'] ); ?></a>
 				<?php endif; ?>
-				<a class="site-header__account" href="<?php echo esc_url( is_user_logged_in() ? admin_url( 'profile.php' ) : wp_login_url() ); ?>">
-					<?php echo esc_html( is_user_logged_in() ? __( 'My account', 'minhaz-lms' ) : __( 'Log in', 'minhaz-lms' ) ); ?>
+				<a class="site-header__account" href="<?php echo esc_url( minhaz_lms_get_tutor_dashboard_url() ); ?>">
+					<?php echo esc_html( is_user_logged_in() ? __( 'Dashboard', 'minhaz-lms' ) : __( 'Log in', 'minhaz-lms' ) ); ?>
 				</a>
 			</div>
 		<?php endif; ?>

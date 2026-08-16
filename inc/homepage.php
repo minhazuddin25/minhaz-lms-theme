@@ -124,6 +124,44 @@ function minhaz_lms_get_featured_course_post_type() {
 }
 
 /**
+ * Gets the configured Tutor dashboard URL for logged-in users.
+ *
+ * Falls back to the core WordPress profile/login URLs when Tutor is unavailable.
+ *
+ * @return string Dashboard or account URL.
+ */
+function minhaz_lms_get_tutor_dashboard_url() {
+	if ( is_user_logged_in() ) {
+		if ( function_exists( 'tutor_utils' ) && is_object( tutor_utils() ) && method_exists( tutor_utils(), 'tutor_dashboard_url' ) ) {
+			return (string) tutor_utils()->tutor_dashboard_url();
+		}
+
+		if ( function_exists( 'tutor_utils' ) && is_object( tutor_utils() ) && method_exists( tutor_utils(), 'get_option' ) ) {
+			$dashboard_page_id = (int) tutor_utils()->get_option( 'tutor_dashboard_page_id', 0 );
+			if ( $dashboard_page_id > 0 ) {
+				$dashboard_url = get_permalink( $dashboard_page_id );
+				if ( $dashboard_url ) {
+					return $dashboard_url;
+				}
+			}
+		}
+
+		$tutor_option = get_option( 'tutor_option', array() );
+		$dashboard_page_id = isset( $tutor_option['tutor_dashboard_page_id'] ) ? (int) $tutor_option['tutor_dashboard_page_id'] : 0;
+		if ( $dashboard_page_id > 0 ) {
+			$dashboard_url = get_permalink( $dashboard_page_id );
+			if ( $dashboard_url ) {
+				return $dashboard_url;
+			}
+		}
+
+		return admin_url( 'profile.php' );
+	}
+
+	return wp_login_url();
+}
+
+/**
  * Gets the normalized rating value for a course.
  *
  * @param int $post_id Course ID.
